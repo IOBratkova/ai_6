@@ -5,6 +5,7 @@ from Classes import Notion, Property
 def getAnswer(list):
     if list[0] in reservedWords:
         res = searchRelation(list) # Где находится Неболит
+
         return res
     else:
         return 'Ответ на главный вопрос Жизни, Вселенной и Всего остального - 42. Что-нибудь еще?'
@@ -19,13 +20,19 @@ def searchRelation(list):
                 return 'Не могу ответить на Ваш вопрос'
             else:
                 tmpNotion = Notion(lin.second.name)
-                return entities[entities.index(tmpNotion)]
+                tmpProp = searchIndexInProperty(lin.first.name, lin.second.name)
+                res = propertis[tmpProp]
+                return res.name + " " + res.first.name + " - " + res.second.name
+                #return propertis[tmpProp]
+                #return entities[entities.index(tmpNotion)]
 
 # properties, x неболит ХадресХ князева было бы хорошо сделать это
 def searchIndexInProperty(first, second):
-    for el in propertis:
-        if el.first == first and el.second == second:
-            return propertis.index(el)
+    for prop in propertis:
+        f = prop.first.name
+        s = prop.second.name
+        if f == first and s == second:
+            return propertis.index(prop)
         else:
             return -1
 

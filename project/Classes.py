@@ -30,7 +30,7 @@ class Event:
 # Класс Свойство
 class Property:
     def __init__(self, first, name, second):
-        self.name = first
+        self.first = first
         self.name = name
         self.second = second
 
@@ -41,7 +41,6 @@ class Property:
 
     def display_info(self):
         print(self.first.name + " " + self.name + " " + self.second.name)
-
 
 # ================ Классы-отношения ====================
 class IsA:
