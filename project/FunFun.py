@@ -23,10 +23,9 @@ def searchRelation(list):
                 #tmpProp = searchIndexInProperty(lin.first.name, lin.second.name)
                 #res = propertis[tmpProp]
                 #return res.name + " " + res.first.name + " - " + res.second.name
-                #return propertis[tmpProp]
                 return entities[entities.index(tmpNotion)]
 
-# properties, x неболит ХадресХ князева было бы хорошо сделать это
+# properties, работает, закомменчено выше (23-25) думаю, как оно будет работать для другого
 def searchIndexInProperty(first, second):
     for prop in propertis:
         f = prop.first.name
