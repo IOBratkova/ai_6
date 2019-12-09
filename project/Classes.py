@@ -66,9 +66,9 @@ class Logic:
 
 
 class Linguistics:
-    # first, например, НЕБОЛИТ (Ayinger)
-    # text, например, НАХОДИТСЯ НА (производит)
-    # second, например УЛ КНЯЗЕВА (BairischPils)
+    # first, например, НЕБОЛИТ
+    # name, например, НАХОДИТСЯ
+    # second, например УЛ КНЯЗЕВА
     def __init__(self, first, name, second ):
         self.name = name
         self.first = first
