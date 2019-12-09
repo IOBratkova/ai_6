@@ -1,54 +1,34 @@
 from Basic import reservedWords, relations, entities, propertis
 from Classes import Notion
 
-# Где находится Неболит
-# Кем является Игорь
 def getAnswer(list):
     if list[0] in reservedWords:
-        res = searchRelation(list) # Где, кем
-        return res
+        if list[2] == 'у':
+            return superSearch(list[1], list[3], propertis)
+            # return searchProperty(list)
+        else:
+            return superSearch(list[1], list[2], relations)
+            # return searchRelation(list)
     else:
-        return 'Ответ на главный вопрос Жизни, Вселенной и Всего остального - 42. Что-нибудь еще?'
+        return 'Ответ на главный вопрос Жизни, Вселенной и Всего Остального - 42. Что-нибудь еще?'
 
-def searchRelation(list):
-    # Цикл по отношениям
-    for relation in relations:
-        # Если слово из отношений совпадает со вторым словом вопроса
-        if relation.name == list[1]:
-            firstNotion = Notion(relation.first.name)   # Неболит, Игорь
+
+def superSearch(word1, word2, list):
+    for element in list:
+        if element.name == word1:
+            fN = Notion(element.first.name)
             try:
-                firstindex = entities.index(firstNotion)  # Ищем совпадение среди сущностей
-                # Если понятие из вопроса не равно найденному перввому понятию известных отношений, ищем дальше
-                if list[2] != firstNotion.name:
+                findex = entities.index(fN)
+                if word2 != fN.name:
                     continue
-            except IndexError: # индекс не входит в список элементов
-                return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
+            except IndexError:
+                return 'Слишком сложный вопрос, правда.'
             else:
-                secondNotion = Notion(relation.second.name)  # Берем второе слово ул. Князева, Администратор
+                sN = Notion(element.second.name)
                 try:
-                    secondindex = entities.index(secondNotion)  # ищем второй индекс
+                    sindex = entities.index(sN)
                 except IndexError:
-                    return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
+                    return 'Как это понимать вообще?'
                 else:
-                    return entities[entities.index(secondNotion)]
+                    return entities[sindex]
     return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
-
-
-# properties, работает, закомменчено выше (23-25) думаю, как оно будет работать для другого
-def searchIndexInProperty(first, second):
-    for prop in propertis:
-        f = prop.first.name
-        s = prop.second.name
-        if f == first and s == second:
-            return propertis.index(prop)
-        else:
-            return -1
-
-# entities, ling
-def searchIndexInEntity(enti, noti):
-    for el in enti:
-        print(el.name,'el.name')
-        if el.name == noti.name:
-            return enti.index(noti)
-        else:
-            return -1
