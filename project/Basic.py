@@ -32,3 +32,23 @@ administrator = IsA(entities[entities.index(Notion('Игорь'))],
                     entities[entities.index(Notion('Администратор'))])
 
 relations.append(administrator)
+
+entities.append(Notion('пациент')) # Сущность-понятие пациент (Факт)
+
+# Кем является Марина? Ответ: пациент
+entities.append(Notion('Марина')) # Сущность-понятие Марина (Факт)
+
+# Кем является Костя? Ответ: пациент
+entities.append(Notion('Костя')) # Сущность-понятие Костя (Факт)
+
+# Марина является пациент
+patientMarina = IsA(entities[entities.index(Notion('Марина'))],
+                    'является',
+                    entities[entities.index(Notion('пациент'))])
+# Марина является пациент
+patientKostya = IsA(entities[entities.index(Notion('Костя'))],
+                    'является',
+                    entities[entities.index(Notion('пациент'))])
+
+relations.append(patientKostya)
+relations.append(patientMarina)
