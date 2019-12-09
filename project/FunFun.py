@@ -18,7 +18,10 @@ def searchRelation(list):
             firstNotion = Notion(relation.first.name)   # Неболит, Игорь
             try:
                 firstindex = entities.index(firstNotion)  # Ищем совпадение среди сущностей
-            except IndexError: #индекс не входит в список элементов
+                # Если понятие из вопроса не равно найденному перввому понятию известных отношений, ищем дальше
+                if list[2] != firstNotion.name:
+                    continue
+            except IndexError: # индекс не входит в список элементов
                 return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
             else:
                 secondNotion = Notion(relation.second.name)  # Берем второе слово ул. Князева, Администратор
@@ -28,6 +31,7 @@ def searchRelation(list):
                     return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
                 else:
                     return entities[entities.index(secondNotion)]
+    return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
 
 
 # properties, работает, закомменчено выше (23-25) думаю, как оно будет работать для другого
