@@ -1,5 +1,9 @@
 from FunFun import getAnswer
-from Basic import entities
+
+# Вопрос из трех слов вводится с вопросительным знаком в конце
+
+# Где находится Неболит?  ул. Князева. +
+# Кем является Игорь?     Администратор
 
 flag = True
 while flag:

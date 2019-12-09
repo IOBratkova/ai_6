@@ -13,18 +13,18 @@ def getAnswer(list):
 # ПОиск отношения среди спискаотношений
 def searchRelation(list):
     for lin in relations:
-        if list[1] == lin.name: # совпадает с лингвистик-нейм
+        if list[1] == lin.name: # ищем второе слово среди слов в отношениях
             tmpNotion = Notion(lin.first.name)
             index = searchIndexInEntity(entities, tmpNotion)
             if index == -1:
                 return 'Не могу ответить на Ваш вопрос'
             else:
                 tmpNotion = Notion(lin.second.name)
-                tmpProp = searchIndexInProperty(lin.first.name, lin.second.name)
-                res = propertis[tmpProp]
-                return res.name + " " + res.first.name + " - " + res.second.name
+                #tmpProp = searchIndexInProperty(lin.first.name, lin.second.name)
+                #res = propertis[tmpProp]
+                #return res.name + " " + res.first.name + " - " + res.second.name
                 #return propertis[tmpProp]
-                #return entities[entities.index(tmpNotion)]
+                return entities[entities.index(tmpNotion)]
 
 # properties, x неболит ХадресХ князева было бы хорошо сделать это
 def searchIndexInProperty(first, second):
