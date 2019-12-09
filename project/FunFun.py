@@ -1,29 +1,34 @@
 from Basic import reservedWords, relations, entities, propertis
-from Classes import Notion, Property
+from Classes import Notion
 
 # Где находится Неболит
+# Кем является Игорь
 def getAnswer(list):
     if list[0] in reservedWords:
-        res = searchRelation(list) # Где находится Неболит
-
+        res = searchRelation(list) # Где, кем
         return res
     else:
         return 'Ответ на главный вопрос Жизни, Вселенной и Всего остального - 42. Что-нибудь еще?'
 
-# ПОиск отношения среди спискаотношений
 def searchRelation(list):
-    for lin in relations:
-        if list[1] == lin.name: # ищем второе слово среди слов в отношениях
-            tmpNotion = Notion(lin.first.name)
-            index = searchIndexInEntity(entities, tmpNotion)
-            if index == -1:
-                return 'Не могу ответить на Ваш вопрос'
+    #Цикл по отношениям
+    for relation in relations:
+        #Если слово из отношений совпадает со вторым словом вопроса
+        if relation.name == list[1]:
+            firstNotion = Notion(relation.first.name) #Неболит, Игорь
+            try:
+                firstindex = entities.index(firstNotion)   #Ищем совпадение среди сущностей
+            except IndexError: #индекс не входит в список элементов
+                return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
             else:
-                tmpNotion = Notion(lin.second.name)
-                #tmpProp = searchIndexInProperty(lin.first.name, lin.second.name)
-                #res = propertis[tmpProp]
-                #return res.name + " " + res.first.name + " - " + res.second.name
-                return entities[entities.index(tmpNotion)]
+                secondNotion = Notion(relation.second.name) #Берем второе слово ул. Князева, Администратор
+                try:
+                    secondindex = entities.index(secondNotion) #ищем второй индекс
+                except IndexError:
+                    return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
+                else:
+                    return entities[entities.index(secondNotion)]
+
 
 # properties, работает, закомменчено выше (23-25) думаю, как оно будет работать для другого
 def searchIndexInProperty(first, second):
@@ -38,6 +43,7 @@ def searchIndexInProperty(first, second):
 # entities, ling
 def searchIndexInEntity(enti, noti):
     for el in enti:
+        print(el.name,'el.name')
         if el.name == noti.name:
             return enti.index(noti)
         else:

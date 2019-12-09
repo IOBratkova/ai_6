@@ -45,7 +45,7 @@ class Property:
 # ================ Классы-отношения ====================
 class IsA:
     #
-    def __init__(self, first, second, name):
+    def __init__(self, first, name, second):
         self.name = name
         self.first = first
         self.second = second
