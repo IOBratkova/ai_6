@@ -24,7 +24,7 @@ relations.append(adress)
 
 #Кем является Игорь?
 entities.append(Notion('Игорь'))  # Сущность-понятие Игорь (Факт)
-entities.append(Notion('Администратор')) #Cущность-понятие администратор
+entities.append(Notion('Администратор')) # Cущность-понятие администратор
 
 # Игорь является Администратором
 administrator = IsA(entities[entities.index(Notion('Игорь'))],

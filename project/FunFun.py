@@ -11,19 +11,19 @@ def getAnswer(list):
         return 'Ответ на главный вопрос Жизни, Вселенной и Всего остального - 42. Что-нибудь еще?'
 
 def searchRelation(list):
-    #Цикл по отношениям
+    # Цикл по отношениям
     for relation in relations:
-        #Если слово из отношений совпадает со вторым словом вопроса
+        # Если слово из отношений совпадает со вторым словом вопроса
         if relation.name == list[1]:
-            firstNotion = Notion(relation.first.name) #Неболит, Игорь
+            firstNotion = Notion(relation.first.name)   # Неболит, Игорь
             try:
-                firstindex = entities.index(firstNotion)   #Ищем совпадение среди сущностей
+                firstindex = entities.index(firstNotion)  # Ищем совпадение среди сущностей
             except IndexError: #индекс не входит в список элементов
                 return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
             else:
-                secondNotion = Notion(relation.second.name) #Берем второе слово ул. Князева, Администратор
+                secondNotion = Notion(relation.second.name)  # Берем второе слово ул. Князева, Администратор
                 try:
-                    secondindex = entities.index(secondNotion) #ищем второй индекс
+                    secondindex = entities.index(secondNotion)  # ищем второй индекс
                 except IndexError:
                     return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
                 else:
