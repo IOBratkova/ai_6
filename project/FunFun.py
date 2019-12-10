@@ -1,13 +1,13 @@
 from Basic import reservedWords, relations, entities, propertis
 from Classes import Notion
 
-def getAnswer(list):
-    if list[0] in reservedWords:
-        if list[2] == 'у':
-            return superSearch(list[1], list[3], propertis)
+def getAnswer(question):
+    if question[0] in reservedWords:
+        if question[2] == 'у':
+            return superSearch(question[1], question[3], propertis)
             # return searchProperty(list)
         else:
-            return superSearch(list[1], list[2], relations)
+            return superSearch(question[1], question[2], relations)
             # return searchRelation(list)
     else:
         return 'Ответ на главный вопрос Жизни, Вселенной и Всего Остального - 42. Что-нибудь еще?'
@@ -15,7 +15,7 @@ def getAnswer(list):
 
 def superSearch(word1, word2, list):
     for element in list:
-        if element.name == word1:
+        if element.name.name == word1:
             fN = Notion(element.first.name)
             try:
                 findex = entities.index(fN)

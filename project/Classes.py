@@ -1,3 +1,17 @@
+# Ключевые слова
+class KeyWords:
+    def __init__(self, name):
+        self.name = name
+
+    def __eq__(self, other):
+        return other.name == self.name
+
+    def display_info(self):
+        print(self.name)
+
+    def __str__(self):
+        return self.name
+
 # ================ Классы-сущности ====================
 
 # Класс Понятие
@@ -42,6 +56,7 @@ class Property:
     def display_info(self):
         print(self.first.name + " " + self.name + " " + self.second.name)
 
+
 # ================ Классы-отношения ====================
 class IsA:
     #
@@ -69,7 +84,7 @@ class Linguistics:
     # first, например, НЕБОЛИТ
     # name, например, НАХОДИТСЯ
     # second, например УЛ КНЯЗЕВА
-    def __init__(self, first, name, second ):
+    def __init__(self, first, name, second):
         self.name = name
         self.first = first
         self.second = second
