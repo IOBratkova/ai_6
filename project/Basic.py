@@ -105,13 +105,13 @@ patientKostya = IsA(entities[entities.index(Notion('Костя'))],
 relations.append(patientKostya)
 
 # Отношение Костя получил Талон237
-talonKostya = PartOf(entities[entities.index(Event('Талон237'))],
+talonKostya = Linguistics(entities[entities.index(Event('Талон237'))],
                      keyWords[keyWords.index(KeyWords('получил'))],
                      entities[entities.index(Notion('Костя'))])
 relations.append(talonKostya)
 
 # Отношение Марина получил Талон237
-talonMarina = PartOf(entities[entities.index(Event('Талон217'))],
+talonMarina = Linguistics(entities[entities.index(Event('Талон217'))],
                      keyWords[keyWords.index(KeyWords('получил'))],
                      entities[entities.index(Notion('Марина'))])
 relations.append(talonMarina)
