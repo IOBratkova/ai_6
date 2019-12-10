@@ -1,10 +1,11 @@
-from Classes import Notion, Property, Linguistics, IsA, Event
+from Classes import Notion, Property, Linguistics, IsA, Event, KeyWords
 
 reservedWords = ['Где', 'Кем', 'Какая', 'Какой']
 
 entities = []  # Cущности
 relations = []  # Отношения
 propertis = []  # Свойства
+keyWords = []
 
 # Где находится Неболит?
 entities.append(Notion('Неболит'))  # Сущность-понятие больница "Неболит" факт
@@ -18,8 +19,9 @@ adress = Property(entities[entities.index(Notion('Неболит'))],
 propertis.append(adress)
 
 # Отношение Адрес
+keyWords.append(KeyWords('находится'))
 adress = Linguistics(entities[entities.index(Notion('Неболит'))],
-                     'находится',
+                     keyWords[keyWords.index(KeyWords('находится'))],
                      entities[entities.index(Notion('ул. Князева'))])
 relations.append(adress)
 
@@ -31,14 +33,15 @@ entities.append(Notion('Новиков'))
 entities.append(Notion('Лор'))
 
 # Волкова является врач
+keyWords.append(KeyWords('является'))
 doctor1 = IsA(entities[entities.index(Notion('Волкова'))],
-              'является',
+              keyWords[keyWords.index(KeyWords('является'))],
               entities[entities.index(Notion('Врач'))])
 relations.append(doctor1)
 
 # Новиков является врач
 doctor2 = IsA(entities[entities.index(Notion('Новиков'))],
-              'является',
+              keyWords[keyWords.index(KeyWords('является'))],
               entities[entities.index(Notion('Врач'))])
 relations.append(doctor2)
 
@@ -62,7 +65,7 @@ entities.append(Notion('Администратор'))  # Cущность-пон�
 
 # Игорь является Администратором
 administrator = IsA(entities[entities.index(Notion('Игорь'))],
-                    'является',
+                    keyWords[keyWords.index(KeyWords('является'))],
                     entities[entities.index(Notion('Администратор'))])
 relations.append(administrator)
 
@@ -71,14 +74,14 @@ entities.append(Notion('пациент'))  # Сущность-понятие п�
 # Кем является Марина? Ответ: пациент
 entities.append(Notion('Марина'))  # Сущность-понятие Марина (Факт)
 patientMarina = IsA(entities[entities.index(Notion('Марина'))],
-                    'является',
+                    keyWords[keyWords.index(KeyWords('является'))],
                     entities[entities.index(Notion('пациент'))])
 relations.append(patientMarina)
 
 # Кем является Костя? Ответ: пациент
 entities.append(Notion('Костя'))  # Сущность-понятие Костя (Факт)
 patientKostya = IsA(entities[entities.index(Notion('Костя'))],
-                    'является',
+                    keyWords[keyWords.index(KeyWords('является'))],
                     entities[entities.index(Notion('пациент'))])
 relations.append(patientKostya)
 
