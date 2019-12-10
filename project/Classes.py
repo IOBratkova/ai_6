@@ -12,8 +12,8 @@ class KeyWords:
     def __str__(self):
         return self.name
 
-# ================ Классы-сущности ====================
 
+# ================ Классы-сущности ====================
 # Класс Понятие
 class Notion:
     def __init__(self, name):
@@ -59,7 +59,6 @@ class Property:
 
 # ================ Классы-отношения ====================
 class IsA:
-    #
     def __init__(self, first, name, second):
         self.name = name
         self.first = first
@@ -84,9 +83,6 @@ class Logic:
 
 
 class Linguistics:
-    # first, например, НЕБОЛИТ
-    # name, например, НАХОДИТСЯ
-    # second, например УЛ КНЯЗЕВА
     def __init__(self, first, name, second):
         self.name = name
         self.first = first

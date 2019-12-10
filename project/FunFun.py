@@ -1,20 +1,19 @@
-from Basic import reservedWords, relations, entities, propertis
+from Basic import reservedWords, relations, entities, properties
 from Classes import Notion
+
 
 def getAnswer(question):
     if question[0] in reservedWords:
         if question[2] == 'у':
-            return superSearch(question[1], question[3], propertis)
-            # return searchProperty(list)
+            return superSearch(question[1], question[3], properties)
         else:
             return superSearch(question[1], question[2], relations)
-            # return searchRelation(list)
     else:
         return 'Вопрос начинается не с зарезервированного слова'
 
 
-def superSearch(word1, word2, list):
-    for element in list:
+def superSearch(word1, word2, arrayOfInformation):
+    for element in arrayOfInformation:
         if element.name.name == word1:
             fN = Notion(element.first.name)
             try:
@@ -28,7 +27,7 @@ def superSearch(word1, word2, list):
                 try:
                     sindex = entities.index(sN)
                 except IndexError:
-                    return 'Как это понимать вообще?'
+                    return 'Не найдено совпадений среди понятий'
                 else:
                     return entities[sindex]
-    return 'Не могу ответить на вопрос, ведь я не понимаю, о чем Вы'
+    return 'Не найдена информация по Вашему вопросу'
