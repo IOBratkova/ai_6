@@ -1,6 +1,6 @@
-from Classes import Notion, Property, Linguistics, IsA, Event, KeyWords
+from Classes import Notion, Property, Linguistics, IsA, Event, KeyWords, PartOf
 
-reservedWords = ['Где', 'Кем', 'Какая', 'Какой']
+reservedWords = ['Где', 'Кем', 'Какая', 'Какой', 'Кто']
 
 entities = []  # Cущности
 relations = []  # Отношения
@@ -104,3 +104,14 @@ date2 = Property(entities[entities.index(Event('Талон217'))],
 propertis.append(date2)
 
 
+# кто взял талон
+keyWords.append(KeyWords('получил'))
+talonKostya = PartOf(entities[entities.index(Event('Талон237'))],
+                     keyWords[keyWords.index(KeyWords('получил'))],
+                     entities[entities.index(Notion('Костя'))])
+relations.append(talonKostya)
+
+talonMarina = PartOf(entities[entities.index(Event('Талон217'))],
+                     keyWords[keyWords.index(KeyWords('получил'))],
+                     entities[entities.index(Notion('Марина'))])
+relations.append(talonMarina)

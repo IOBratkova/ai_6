@@ -10,7 +10,7 @@ def getAnswer(question):
             return superSearch(question[1], question[2], relations)
             # return searchRelation(list)
     else:
-        return 'Ответ на главный вопрос Жизни, Вселенной и Всего Остального - 42. Что-нибудь еще?'
+        return 'Вопрос начинается не с зарезервированного слова'
 
 
 def superSearch(word1, word2, list):
@@ -22,7 +22,7 @@ def superSearch(word1, word2, list):
                 if word2 != fN.name:
                     continue
             except IndexError:
-                return 'Слишком сложный вопрос, правда.'
+                return 'Не найдено совпадений среди понятий.'
             else:
                 sN = Notion(element.second.name)
                 try:

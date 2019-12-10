@@ -67,10 +67,13 @@ class IsA:
 
 
 class PartOf:
-    def __init__(self, first, second, name):
+    def __init__(self, first, name, second):
         self.name = name
         self.first = first
         self.second = second
+
+    def __eq__(self, other):
+        return other.name == self.name and self.second == other.second and self.first == other.first
 
 
 class Logic:
