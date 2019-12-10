@@ -18,7 +18,7 @@ entities.append(Notion('Кардиолог'))
 entities.append(Notion('Администратор'))
 entities.append(Notion('пациент'))
 entities.append(Notion('Неболит'))
-entities.append(Notion('ул. Князева'))
+entities.append(Notion('ул. Городская, д. 75'))
 entities.append(Notion('Волкова'))
 entities.append(Notion('Новиков'))
 entities.append(Notion('Игорь'))
@@ -37,10 +37,10 @@ keyWords.append(KeyWords('является'))
 keyWords.append(KeyWords('получил'))
 
 # Свойства =============================================================
-# Свойство Адрес (Неболит - АДРЕС - ул. Князева)
+# Свойство Адрес (Неболит - АДРЕС - ул. Городская, д. 75)
 addressProperty = Property(entities[entities.index(Notion('Неболит'))],
                            entities[entities.index(Notion('адрес'))],
-                           entities[entities.index(Notion('ул. Князева'))])
+                           entities[entities.index(Notion('ул. Городская, д. 75'))])
 properties.append(addressProperty)
 
 # Свойство Специальность (Волкова - СПЕЦИАЛЬНОСТЬ - Кардиолог)
@@ -71,7 +71,7 @@ properties.append(date2)
 # Отношение Неболит находится ул. Князева
 addressRelation = Linguistics(entities[entities.index(Notion('Неболит'))],
                               keyWords[keyWords.index(KeyWords('находится'))],
-                              entities[entities.index(Notion('ул. Князева'))])
+                              entities[entities.index(Notion('ул. Городская, д. 75'))])
 relations.append(addressRelation)
 
 # Отношение Волкова является врач
