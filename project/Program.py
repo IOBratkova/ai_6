@@ -19,7 +19,7 @@ from FunFun import getAnswer
 flag = True
 while flag:
     question = input()
-    if question == 'exit':
+    if question == 'exit' or question == 'стоп':
         flag = False
         break
     elif question[len(question)-1] != '?':
